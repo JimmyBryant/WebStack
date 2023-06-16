@@ -12,6 +12,22 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+function register_custom_meta_fields() {
+	$fields = ["_sites_link","_sites_sescribe","_sites_order","_thumbnail","_wechat_qr"];
+	foreach($fields as $field){
+		register_meta('post', $field, array(
+			'show_in_rest' => true,
+			'single' => true,
+			'type' => 'string',
+			'auth_callback' => 'custom_meta_permission_callback',
+		));
+	}
+}
+add_action('init', 'register_custom_meta_fields');
+// 自定义权限检查回调函数
+function custom_meta_permission_callback($object_id, $key, $value) {
+    return true;
+}
 
 // 网址
 add_action( 'init', 'post_type_sites' );
@@ -39,6 +55,7 @@ function post_type_sites() {
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
+		'show_in_rest'       => true,  // 启用REST API支持
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'sites' ),
 		'capability_type'    => 'post',
@@ -46,12 +63,18 @@ function post_type_sites() {
 		'has_archive'        => false,
 		'hierarchical'       => false,
 		'menu_position'      => 10,
-		'supports'           => array( 'title',  'author', 'editor', 'comments', 'custom-fields' )//'editor','excerpt',
+		'supports'           => array( 'title',  'author', 'editor', 'thumbnail', 'comments', 'custom-fields' ), //'editor','excerpt',
+		'taxonomies'         => array( 'post_tag' ), // 启用标签支持
 	);
 
 	register_post_type( 'sites', $args );
 }
 
+// 添加自定义特色图片字段到默认特色图片功能
+function add_custom_featured_image_support() {
+    add_theme_support( 'post-thumbnails', array( 'sites' ) );
+}
+add_action( 'after_setup_theme', 'add_custom_featured_image_support' );
 
 // 网址分类
 add_action( 'init', 'create_sites_taxonomies', 0 );
@@ -74,6 +97,7 @@ function create_sites_taxonomies() {
 		'hierarchical'      => true,
 		'labels'            => $labels,
 		'show_ui'           => true,
+		'show_in_rest'      => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'favorites' ),
@@ -81,7 +105,6 @@ function create_sites_taxonomies() {
 
 	register_taxonomy( 'favorites', array( 'sites' ), $args );
 }
-
 
 // 公告
 add_action( 'init', 'post_type_bulletin' );
@@ -163,6 +186,11 @@ function custom_sites_rewrites_init(){
     add_rewrite_rule(
         'sites/([0-9]+)?.html/comment-page-([0-9]{1,})$',
         'index.php?post_type=sites&p=$matches[1]&cpage=$matches[2]',
+        'top'
+    );
+	add_rewrite_rule(
+        '^sites/tag/([^/]+)/?$',
+        'index.php?post_type=sites&tag=$matches[1]',
         'top'
     );
 }
@@ -330,7 +358,6 @@ function io_add_quick_edit($column_name, $post_type) {
 	  	</fieldset>';
 	}
 }
-
 
 //保存和更新数据
 add_action('save_post', 'io_save_quick_edit_data');
