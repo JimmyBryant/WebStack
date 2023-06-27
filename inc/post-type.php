@@ -24,6 +24,21 @@ function register_custom_meta_fields() {
 	}
 }
 add_action('init', 'register_custom_meta_fields');
+// 添加term meta支持REST API
+function register_custom_term_meta_fields() {
+	$fields = ["_term_ico","_term_order"];
+	foreach($fields as $field){
+		// 替换'taxonomy'为你要添加元数据的术语类型（分类法）
+		register_meta('term', $field, array(
+			'show_in_rest' => true,
+			'single' => true,
+			'type' => 'string',
+			'auth_callback' => 'custom_meta_permission_callback',
+		));
+	}
+}
+
+add_action('init', 'register_custom_term_meta_fields');
 // 自定义权限检查回调函数
 function custom_meta_permission_callback($object_id, $key, $value) {
     return true;
@@ -97,7 +112,7 @@ function create_sites_taxonomies() {
 		'hierarchical'      => true,
 		'labels'            => $labels,
 		'show_ui'           => true,
-		'show_in_rest'      => true,
+		'show_in_rest'       => true,  // 启用REST API支持
 		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'favorites' ),
