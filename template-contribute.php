@@ -19,7 +19,7 @@ include( 'templates/header-nav.php' );
     <div class="container">
 	    <div class="row">
 	    	<div class="col-12 mx-auto">
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                     <h1 class="h2"><?php echo get_the_title() ?></h1>
                     <div class="panel-body mt-2">
                         <div class="row">
@@ -31,7 +31,7 @@ include( 'templates/header-nav.php' );
                             </div> 
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="panel panel-tougao">
                     <h1 class="h2"><?php _e('添加网站','i_theme') ?></h1>
                     <form id="tougao" class="io-tougao mb-4" method="post" action="<?php echo $_SERVER["REQUEST_URI"]?>">
