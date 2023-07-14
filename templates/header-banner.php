@@ -19,7 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }  ?>
                 <i class="fa fa-bars"></i>
             </a>
         </li>
-
+        <?php
+            if(function_exists('wp_nav_menu')) wp_nav_menu( array('container' => false, 'items_wrap' => '<li id="%1$s" class="%2$s">%3$s</li>', 'theme_location' => 'nav_primary',) ); 
+        ?>
       </ul>
     </div>
 </nav>

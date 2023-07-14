@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  */
 register_nav_menus( array(
 	'nav_main' => '侧栏底部菜单',
+	'nav_primary' => '顶部菜单',
 ));
 
 

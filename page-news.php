@@ -21,19 +21,26 @@
         display: flex;
         margin-bottom: 20px;
         background-color: #FFF;
+        box-shadow: 0 0px 8px 0px rgb(0 0 0 / .15);
+        padding: 20px;
     }
 
     .post-thumbnail {
-        flex-basis: 30%;
-        margin-right: 20px;
+        flex: 0 0 30%;
+        display: flex;
+        align-items: center;
     }
-    .post-thumbnail a{
+
+    .post-thumbnail a {
         display: block;
+        font-size: 0;
     }
-    .post-thumbnail svg{
+
+    .post-thumbnail svg {
         width: 100%;
         height: auto;
     }
+
     .post-thumbnail img {
         width: 100%;
         height: auto;
@@ -41,6 +48,16 @@
 
     .post-content {
         flex-grow: 1;
+        padding: 15px;
+    }
+
+    .post-content p {
+        color: #333;
+    }
+
+    .entry-title {
+        margin: 0 0 15px 0;
+        line-height: 1.6;
     }
 
     .entry-title a {
@@ -49,10 +66,11 @@
     }
 
     .entry-meta {
-        margin-bottom: 10px;
+        /* margin-bottom: 10px; */
     }
 
     .post-date {
+        color: #999;
         margin-right: 10px;
     }
 
@@ -60,8 +78,62 @@
         margin-right: 5px;
     }
 
-    .entry-summary {
-        color: #666;
+    /* 分页容器 */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    /* 分页链接 */
+    .pagination a {
+        display: inline-block;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        margin: 0 4px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    /* 当前页链接 */
+    .pagination .current {
+        color: #CCC;
+        padding: 8px 16px;
+    }
+
+    /* 悬停效果 */
+    .pagination a:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* 前一页和后一页 */
+    .pagination .prev,
+    .pagination .next {
+        font-weight: bold;
+    }
+
+    /* 禁用状态 */
+    .pagination .prev.disabled,
+    .pagination .next.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        .post-content {
+            padding: 0;
+            padding-left: 15px;
+        }
+
+        .entry-title {
+            font-size: 14px;
+        }
+
+        .entry-excerpt {
+            display: none;
+        }
     }
 </style>
 <?php
@@ -125,18 +197,15 @@ include('templates/header-nav.php');
 
 
                         <div class="post-content">
-                            <header class="entry-header">
-                                <h2 class="entry-title">
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </h2>
-                                <div class="entry-meta">
-                                    <span class="post-date"><?php the_time('Y-m-d'); ?></span>
-                                    <span class="post-tags"><?php the_tags('', ', ', ''); ?></span>
-                                </div>
-                            </header>
-
-                            <div class="entry-summary">
+                            <h2 class="entry-title">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h2>
+                            <div class="entry-excerpt">
                                 <?php the_excerpt(); ?>
+                            </div>
+                            <div class="entry-meta">
+                                <span class="post-date"><?php the_time('Y-m-d'); ?></span>
+                                <!-- <span class="post-tags"><?php the_tags('', ', ', ''); ?></span> -->
                             </div>
                         </div>
                     </div>
