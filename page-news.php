@@ -26,7 +26,8 @@
     }
 
     .post-thumbnail {
-        flex: 0 0 30%;
+        width: 150px;
+        flex: none;
         display: flex;
         align-items: center;
     }
@@ -185,7 +186,7 @@ include('templates/header-nav.php');
                                 <?php if (has_post_thumbnail()) : ?>
                                     <?php the_post_thumbnail('thumbnail'); ?>
                                 <?php else : ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
                                         <rect width="100%" height="100%" fill="#CCCCCC" />
                                         <text x="50%" y="50%" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20">
                                             ainav-pro.com
