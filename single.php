@@ -68,6 +68,7 @@ include('templates/header-nav.php');
         background-color: #FFF;
         max-width: 100%;
         margin-bottom: 30px;
+        border-radius: 5px;
     }
 
     article h1 {
@@ -106,6 +107,7 @@ include('templates/header-nav.php');
         position: sticky;
         top: 100px;
         box-shadow: 0 0 8px 1px rgb(0 0 0 / .1);
+        border-radius: 5px;
     }
 
     .related-posts h3 {
@@ -136,6 +138,10 @@ include('templates/header-nav.php');
         width: 100%;
         height: auto;
         max-width: 100%;
+        border-radius: 5px;
+    }
+    .post-item .post-thumbnail svg{
+        border-radius: 5px;        
     }
 
     .post-item .post-content .post-title {
