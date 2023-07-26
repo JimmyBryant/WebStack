@@ -89,6 +89,7 @@ include('templates/header-nav.php');
 
     article img {
         width: 100%;
+        height: auto;
         max-width: 100%;
         max-height: 100%;
     }
@@ -268,7 +269,7 @@ include('templates/header-nav.php');
                                                     <?php the_post_thumbnail('thumbnail'); ?>
                                                 <?php else : ?>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-                                                        <rect width="100%" height="100%" fill="#FFFFFF" />
+                                                        <rect width="100%" height="100%" fill="#CCC" />
                                                         <text x="50%" y="50%" fill="#333" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20">
                                                             ainav-pro.com
                                                         </text>
