@@ -120,9 +120,9 @@ footer.main-footer:after{clear:both}
 .user-info-navbar .user-info-menu.right-links{float:right}
 .user-info-navbar .user-info-menu li{line-height:1;display:table-cell;text-align:center;vertical-align:middle}
 .user-info-navbar .user-info-menu li a{line-height:1}
-.user-info-navbar .user-info-menu>li>a{display:block;padding:18px 10px;color:#979898;text-decoration:none}
+.user-info-navbar .user-info-menu>li>a{display:block;padding:18px 10px;color:#333;text-decoration:none}
 .user-info-navbar .user-info-menu>li>a i{font-size:15px;line-height:1}
-.user-info-navbar .user-info-menu>li>a:hover{color:#606161}
+.user-info-navbar .user-info-menu>li>a:hover{color:#000}
 .user-info-navbar .user-info-menu>li a[data-toggle=sidebar]{padding:31px 10px;padding-left:20px}
 @media screen and (max-width:767px){.page-container{display:block}
 .page-container .sidebar-menu,.page-container .main-content{display:block;width:100%;height:auto;position:absolute;top:50px}
