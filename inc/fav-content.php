@@ -50,7 +50,8 @@ function fav_con($mid) { ?>
           <?php
           elseif ($myposts->have_posts()): while ($myposts->have_posts()): $myposts->the_post(); 
             $link_url = get_post_meta($post->ID, '_sites_link', true); 
-            $default_ico = get_theme_file_uri('/images/favicon.png');
+            // $default_ico = get_theme_file_uri('/images/favicon.png');
+            $default_ico = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8detRPQAIQwMXDykjvwAAAABJRU5ErkJggg==';
             if(current_user_can('level_10') || get_post_meta($post->ID, '_visible', true)==""):
           ?>
             <div class="xe-card <?php echo io_get_option('columns') ?> <?php echo get_post_meta($post->ID, '_wechat_qr', true)? 'wechat':''?>">
