@@ -174,7 +174,7 @@ nav.navbar{position:sticky;top:0;z-index:2000!important;padding:0;background-col
 .xe-widget.xe-conversations:hover,.xe-widget.xe-conversations:focus{background:#fff!important;text-decoration:none}
 .xe-card.wechat a:after{content:'\f029';position:absolute;display:inline-block;font-family:FontAwesome;font-size:18px;color:#6d747a;margin-left:10px;bottom:0;right:5px}
 .mx-auto{margin-left:auto;margin-right:auto;float:none}
-.main-content .panel img{max-width:100%;height:auto;display: block;margin: 0 auto;}
+.main-content .panel img{max-width:100%;height:auto;display: block;}
 footer.main-footer{border-top:0;background-color:#fff}
 .no-search{margin-top:85px}
 .collapsed .main-menu>li>a{position:relative;overflow:hidden}
