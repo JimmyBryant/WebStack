@@ -46,17 +46,26 @@ include('templates/header-nav.php');
         );
 
         $latest_posts = get_posts($args);
-
+        $current_date = current_time('Y-m-d H:i:s'); // 获取当前时间
         foreach ($latest_posts as $post) :
           setup_postdata($post);
           // 获取文章的封面图片
           $thumbnail = get_the_post_thumbnail_url();
+          $post_date = get_the_date('Y-m-d H:i:s'); // 获取文章的发布时间
+          // 计算发布时间与当前时间的差异
+          $time_difference = abs(strtotime($current_date) - strtotime($post_date));
+          // 使用human_time_diff()函数显示比较友好的时间格式
+          $friendly_time = human_time_diff(strtotime($post_date), strtotime($current_date)) . '前';
         ?>
           <div class="post-item">
             <a class="link" href="<?php the_permalink() ?>" title="<?php the_title() ?>">
               <!-- <img src="<?php echo $thumbnail ?>" alt="<?php the_title() ?>" /> -->
               <span class="thumb" style="background-image: url(<?php echo $thumbnail ?>);"></span>
-              <h2 class="title"><?php the_title(); ?></h2>
+              <div class="info">
+                <div class="date"><i class="fa fa-calendar"></i><?php echo $friendly_time?></div>
+                <h2 class="title"><?php the_title(); ?></h2>
+              </div>
+
             </a>
           </div>
         <?php

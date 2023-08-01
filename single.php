@@ -76,6 +76,14 @@ include('templates/header-nav.php');
         font: 700 32px/38px MicrosoftYaHei Bold, MicrosoftYaHei, Arial, Hiragino Sans GB, STHeiti, Helvetica Neue, Helvetica, Microsoft Yahei, WenQuanYi Micro Hei, sans-serif;
         color: #404040;
     }
+    .entry-meta{
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    .entry-meta i{
+        margin-right: 5px;
+        vertical-align: text-top;
+    }
 
     .page .panel article p,
     article p {
@@ -215,6 +223,14 @@ include('templates/header-nav.php');
                     <div class="main">
                         <article>
                             <h1><?php echo get_the_title() ?></h1>
+                            <?php 
+                                      $post_date = get_the_date('Y-m-d H:i:s'); // 获取文章的发布时间
+                                      // 计算发布时间与当前时间的差异
+                                      $time_difference = abs(strtotime($current_date) - strtotime($post_date));
+                                      // 使用human_time_diff()函数显示比较友好的时间格式
+                                      $friendly_time = human_time_diff(strtotime($post_date), strtotime($current_date)) . '前';
+                            ?>
+                            <div class="entry-meta text-gray"><span class="posted-on"><i class="fa fa-calendar"></i><time><?php echo $friendly_time?></time>发布</span></div>
                             <?php while (have_posts()) : the_post(); ?>
                                 <?php the_content(); ?>
                                 <?php edit_post_link(__('编辑', 'i_theme'), '<span class="edit-link">', '</span>'); ?>

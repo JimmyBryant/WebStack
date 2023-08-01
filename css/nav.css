@@ -383,17 +383,27 @@ input[type="button"],input[type="submit"]{background-color:#222;border:0;-webkit
     max-width: 100%;
     height: auto;
 }
-.post-item .link h2.title{
+.post-item .link .info{
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    color: #FFF;
+    padding:20px;
+    z-index: 9;
+}
+.post-item .link .date{
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+.post-item .link .date i{
+    margin-right: 5px;
+}
+.post-item .link h2.title{
     margin: 0;
     color: #FFF;
-    font-size: 26px;
-    padding: 15px;
-    font-weight: 300;
-    line-height: 36px;
-    z-index: 9;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 35px;
     letter-spacing: .5px;
 }
