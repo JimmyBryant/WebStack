@@ -25,9 +25,6 @@ include('templates/header-nav.php');
   <?php
   if (io_get_option('is_search')) {
     include('search-tool.php');
-  } else { ?>
-    <div class="no-search"></div>
-  <?php
   }
   ?>
 
