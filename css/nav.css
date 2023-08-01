@@ -330,3 +330,70 @@ input[type="button"],input[type="submit"]{background-color:#222;border:0;-webkit
 .black .siteico{background:#222}
 .black .posts-nav{color:rgba(221,221,221,.2)}
 .black .input-group-addon{color:#ddd;background:#26282a;border-color:#26282a}
+.section-title{
+    margin-bottom: 30px;
+}
+.post-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.post-gallery .post-item{
+    flex: 1 0 auto;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.post-gallery .post-item .link{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.post-item .link::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    background-color: rgb(0 0 0 /.2);
+    z-index: 0;
+    transition: background-color .3s ease;
+}
+
+.post-item .link:hover::after{
+    background-color: rgb(0 0 0 /.5);
+}
+
+.post-item .thumb{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.post-item .thumb img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.post-item .link h2.title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    color: #FFF;
+    font-size: 26px;
+    padding: 15px;
+    font-weight: 300;
+    line-height: 36px;
+    z-index: 9;
+    letter-spacing: .5px;
+}
